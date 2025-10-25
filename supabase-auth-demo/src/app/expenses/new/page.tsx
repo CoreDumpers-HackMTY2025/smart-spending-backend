@@ -21,6 +21,10 @@ export default function NewExpensePage() {
   const [mode, setMode] = useState<'fast' | 'advanced'>("fast");
   const [expenseType, setExpenseType] = useState<string>("general");
 
+  // Estado para creación rápida de categoría
+  const [newCategoryName, setNewCategoryName] = useState("");
+  const [creatingCategory, setCreatingCategory] = useState(false);
+
   useEffect(() => {
     const loadCats = async () => {
       setLoadingCats(true);
@@ -120,6 +124,51 @@ export default function NewExpensePage() {
       if (found) setCategoryId(String(found.id));
     }
   };
+
+  async function getAccessToken(): Promise<string | null> {
+    try {
+      const supabase = getSupabase();
+      const { data } = await supabase.auth.getSession();
+      return data.session?.access_token ?? null;
+    } catch {
+      return null;
+    }
+  }
+
+  async function handleQuickAddCategory(e?: React.FormEvent) {
+    if (e) e.preventDefault();
+    const name = newCategoryName.trim();
+    if (!name) return;
+    try {
+      setCreatingCategory(true);
+      const token = await getAccessToken();
+      if (!token) {
+        setMessage("Debes iniciar sesión para agregar categorías.");
+        return;
+      }
+      const res = await fetch("/api/categories", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
+        },
+        body: JSON.stringify({ name }),
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json.error || "No se pudo crear la categoría");
+      }
+      const created: Category = json.data || json;
+      setCategories((prev) => [...prev, created]);
+      setCategoryId(String(created.id));
+      setNewCategoryName("");
+      setMessage("Categoría creada");
+    } catch (err: any) {
+      setMessage(err.message || "Error creando categoría");
+    } finally {
+      setCreatingCategory(false);
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -365,7 +414,7 @@ export default function NewExpensePage() {
             />
           </label>
 
-          {/* Categoría */}
+          {/* Categoría + creación rápida */}
           <label style={{ display: "grid", gap: 6 }}>
             <span style={{ fontSize: 13 }}>Categoría</span>
             <select
@@ -385,6 +434,39 @@ export default function NewExpensePage() {
               ))}
             </select>
             {loadingCats && <small style={{ opacity: 0.8 }}>Cargando categorías…</small>}
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+              <input
+                type="text"
+                placeholder="Nueva categoría"
+                value={newCategoryName}
+                onChange={(e) => setNewCategoryName(e.target.value)}
+                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); handleQuickAddCategory(); } }}
+                style={{
+                  padding: "10px 12px",
+                  borderRadius: 8,
+                  border: "1px solid #334155",
+                  background: "#0b1220",
+                  color: "#e2e8f0",
+                  flex: 1,
+                }}
+              />
+              <button
+                type="button"
+                onClick={() => handleQuickAddCategory()}
+                disabled={creatingCategory}
+                style={{
+                  padding: "6px 10px",
+                  borderRadius: 8,
+                  border: "1px solid #334155",
+                  background: creatingCategory ? "#1f2937" : "#0b1220",
+                  color: "#e2e8f0",
+                  cursor: creatingCategory ? "not-allowed" : "pointer",
+                  fontSize: 12,
+                }}
+              >
+                {creatingCategory ? "Agregando…" : "Agregar"}
+              </button>
+            </div>
           </label>
 
           {/* Comercio */}

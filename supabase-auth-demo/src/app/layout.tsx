@@ -25,6 +25,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <header style={{ position: 'sticky', top: 0, zIndex: 50, background: '#ffffff', borderBottom: '1px solid #e5e5e5' }}>
+          <nav style={{ maxWidth: 1100, margin: '0 auto', padding: '10px 16px', display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
+            <a href="/" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Inicio</a>
+            <a href="/expenses" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Gastos</a>
+            <a href="/carbon" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Carbono</a>
+            <a href="/transport" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Transporte</a>
+            <a href="/recommendations" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Recomendaciones</a>
+            <a href="/incomes" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Ingresos</a>
+            <a href="/budgets" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Presupuestos</a>
+            <a href="/subscriptions" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Suscripciones</a>
+            <a href="/categories" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Categorías</a>
+            <a href="/savings-goals" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Metas</a>
+            <a href="/profile" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Perfil</a>
+          </nav>
+        </header>
         {children}
       </body>
     </html>
