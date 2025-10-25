@@ -140,3 +140,25 @@ export async function GET(req: NextRequest) {
   });
 }
 ```
+
+## Alineación Spendly v2 — Logros de sostenibilidad y comunidad
+
+- Nuevos logros: `eco-warrior`, `smart-commute`, `meal-prep-master` vinculados a reducción de CO2 y hábitos.
+- Progreso urbano: calcular progreso según patrones semanales y participación en retos del vecindario (opt-in).
+- Transparencia: mostrar cómo se calcula el progreso y puntos.
+- Motivación: badges y niveles que fomentan la continuidad.
+
+### Mejoras v2 sugeridas
+- Añadir categorías de logros por impacto (financiero/ambiental/social).
+- Relacionar logros con `notifications` para celebrar hitos.
+- Integrar con `transport/heatmap` y `carbon/summary` para progreso automático.
+
+## Alineación Spendly v3 — Logros con CivicPoints y datos urbanos
+
+- CivicPoints: asociar logros a acciones como `eco_action`, `mobility_share`, `data_quality` y `streak_bonus`.
+- Urban Data: premiar participación óptima (opt-in) en recolección anónima y uso sostenido de transporte público.
+- Beneficios: mostrar canje de puntos por beneficios ciudadan		os (vouchers, transporte gratis, etc.).
+
+### Mejoras v3 sugeridas
+- Añadir niveles vinculados al total de CivicPoints y multiplicadores de recompensa.
+- Integrar eventos de logro con `civic-points/earn` para acreditación automática.

@@ -155,3 +155,25 @@ export async function GET(req: NextRequest) {
   });
 }
 ```
+
+## Alineación Spendly v2 — Movilidad Inteligente
+
+- Open Data: se puede enriquecer el heatmap con datos GTFS (horarios, líneas, paradas) para ofrecer alternativas en tiempo real.
+- Patrones urbanos: cruza picos por día/hora con rutas frecuentes del usuario para sugerir transporte público o modos activos.
+- Impacto ambiental: el mapa refleja no solo monto, también CO2 por franja horaria, resaltando oportunidades de reducción.
+- Privacidad: todas las agregaciones se realizan a nivel usuario y/o zona (opt-in) sin exponer información sensible.
+
+### Mejoras v2 sugeridas
+- Añadir `heatmapCO2` paralelo: `{ day, hours[{hour, co2Kg, count}] }`.
+- Incluir `topRoutes` y `potentialSavings` en `patterns` con estimaciones.
+- Conectar con `recommendations/generate` para acciones inmediatas ("desafío: transporte público 3/5 días").
+
+## Alineación Spendly v3 — Movilidad con Urban Data Hub
+
+- Datos urbanos: si hay consentimiento, correlacionar patrón personal con analytics agregados por zona (`analytics/mobility`).
+- Sugestión activa: ofrecer rutas alternativas con impacto económico y ambiental estimado (ahorro y CO2) por hora.
+- CivicPoints: registrar `eco_action` al detectar uso sostenido de transporte público.
+
+### Mejoras v3 sugeridas
+- Exponer `heatmapCO2` y `cityComparison` para ver posición relativa vs zona.
+- Integrar matriz Origen-Destino (O-D) anónima para recomendaciones.

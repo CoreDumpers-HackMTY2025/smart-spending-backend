@@ -136,3 +136,25 @@ export async function POST(req: NextRequest) {
   });
 }
 ```
+
+## Alineación Spendly v2 — Reglas de impacto y movilidad
+
+- Reglas nuevas: hábitos de transporte sostenible (3 días/semana), meal-prep, reducción de huella mensual.
+- Contexto urbano: reglas pueden utilizar patrones de `transport/heatmap` y `carbon/summary`.
+- Privacidad: reglas se basan en datos agregados del usuario, sin compartir con terceros.
+- Feedback: se retornan mensajes accionables y se coordinan con notificaciones.
+
+### Mejoras v2 sugeridas
+- Añadir umbrales dinámicos según proyección mensual (si `fast`).
+- Incluir reglas por vecindario (opt-in) y retos comunitarios.
+- Integrar puntos extra por cambios sostenibles consecutivos.
+
+## Alineación Spendly v3 — Reglas con CivicPoints y MX
+
+- Integración MX: considerar eventos desde `mx_aggregation` (ej. primera suscripción detectada) para logros específicos.
+- CivicPoints: añadir reglas que acrediten puntos por `mobility_share`, `commercial_share`, `energy_share` y `streak_bonus`.
+- Calidad de datos: otorgar `data_quality` por participación consistente con consentimiento y formato válido.
+
+### Mejoras v3 sugeridas
+- Registrar `meta` con `source`, `zone` y `timeOfDay` para reglas contextuales.
+- Integrar con `civic-points/earn` para acreditación automática al cumplir condiciones.

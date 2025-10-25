@@ -167,4 +167,25 @@ export async function GET(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Doble Impacto y Ciudad Inteligente
+
+- Doble panel: la proyección financiera se complementa con la proyección ambiental (CO2 del mes y equivalencias), incluyendo comparativa vs promedio urbano.
+- Alertas proactivas: si el ritmo es `fast`, se sugieren ajustes (meal-prep, transporte público) y se coordina con notificaciones.
+- Contexto urbano: puede ajustar recomendaciones según picos de movilidad, clima, festividades y eventos de ciudad.
+- Gamificación: retos asociados a reducir ritmo en categorías de alto impacto (transporte, comida fuera).
+
+### Mejoras v2 sugeridas
+- Añadir `projection.co2Estimated` y `equivalences` (árboles, km auto, kWh) si está disponible el cálculo.
+- Exponer `spendingPace_reason` con explicación basada en patrones y comparativas.
+- Integrar `recommendations` con el motor IA (`recommendations/generate`).
+
+## Alineación Spendly v3 — Proyección con datos MX y métricas urbanas
+
+- Datos MX: considerar gastos de origen `mx_aggregation` para proyección más completa.
+- Métrica urbana: exponer (opt-in) `cityMetric` con promedio de gasto urbano y tendencia.
+- Simulación: ofrecer recomendaciones con impacto económico urbano (ej. incentivos y ahorro energético por zona).
+
+### Mejoras v3 sugeridas
+- Integrar con `analytics/*` para mostrar índices de actividad económica por zona.
+- Añadir `policySuggestions` para gobierno, basadas en proyección ciudadana agregada (opt-in).

@@ -125,4 +125,25 @@ export async function GET(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Notificaciones inteligentes urbanas
+
+- Contexto: avisos según ritmo de gasto (`fast`), patrones de movilidad y metas ambientales.
+- Sugerencias accionables: botones rápidos para aceptar retos de movilidad o meal-prep.
+- Respeto a privacidad: se evita enviar datos sensibles; se usan agregaciones.
+- Relevancia temporal: se priorizan notificaciones cuando el impacto es mayor (ej. horas pico).
+
+### Mejoras v2 sugeridas
+- Incluir `priority` y `action` en meta para UI.
+- Agrupar notificaciones similares para evitar saturación.
+- Integrar con `recommendations/generate` para contenido dinámico contextual.
+
+## Alineación Spendly v3 — Puntos cívicos y beneficios
+
+- CivicPoints: notificar ganancias de puntos (`earn`) por acciones como `mobility_share`, `commercial_share`, `eco_action`.
+- Beneficios: notificar canje de beneficios y mostrar códigos de voucher.
+- MX: notificar sincronización bancaria (`mx/sync`) exitosa y nuevas categorías detectadas.
+
+### Mejoras v3 sugeridas
+- Añadir `category: 'points'|'benefits'|'mx'` en `notifications`.
+- Integrar con `civic-points/balance` y `civic-points/redeem` para acceso rápido.

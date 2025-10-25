@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import ChatWidget from "./components/ChatWidget";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,6 +34,7 @@ export default function RootLayout({
             <a href="/carbon" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Carbono</a>
             <a href="/transport" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Transporte</a>
             <a href="/recommendations" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Recomendaciones</a>
+            <a href="/gamification" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Gamificación</a>
             <a href="/incomes" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Ingresos</a>
             <a href="/budgets" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Presupuestos</a>
             <a href="/subscriptions" style={{ padding: '6px 8px', borderRadius: 6, textDecoration: 'none', color: '#111' }}>Suscripciones</a>
@@ -41,6 +44,7 @@ export default function RootLayout({
           </nav>
         </header>
         {children}
+        <ChatWidget />
       </body>
     </html>
   );

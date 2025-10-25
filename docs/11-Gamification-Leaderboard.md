@@ -91,4 +91,25 @@ export async function GET(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Ranking por vecindario (opt-in)
+
+- Ranking local: permite filtrar por zona/vecindario para fomentar participación comunitaria.
+- Sostenibilidad: puntos reflejan logros ambientales además de financieros.
+- Inclusión: mostrar métricas agregadas y evitar exposición de datos sensibles.
+- Motivación: destacar subidas de semana en semana y enviar reconocimientos.
+
+### Mejoras v2 sugeridas
+- Añadir `zone` opcional a `profiles` o derivar contextualmente.
+- Exponer `deltaWeek` y `badges` en respuesta.
+- Integrar con `notifications` para comunicar posición y avances.
+
+## Alineación Spendly v3 — Leaderboard con CivicPoints
+
+- Ranking de puntos cívicos: combinar puntos de logros y saldo de CivicPoints para un ranking integral.
+- Beneficios: mostrar badges y beneficios canjeados como parte del perfil.
+- Transparencia: exponer reglas de cálculo y opciones de opt-out.
+
+### Mejoras v3 sugeridas
+- Añadir `civicPointsBalance` en respuesta.
+- Integrar con `civic-points/balance` y `civic-points/redeem` para experiencias completas.

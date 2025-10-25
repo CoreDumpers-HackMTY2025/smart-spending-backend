@@ -79,3 +79,27 @@ export async function withAuth(
   }
 }
 ```
+
+## Alineación Spendly v2 — Orígenes confiables y contexto urbano
+
+- Dispositivos urbanos (opt-in): contemplar tokens de "dispositivo confiable" para integraciones municipales (sensores/bots), con permisos limitados.
+- Rate limiting: proteger endpoints sensibles según perfil (`user`, `city_device`) y origen de tráfico.
+- Privacidad y seguridad: nunca exponer datos personales en integraciones; auditoría de accesos y trazabilidad.
+- Resiliencia: manejo de errores tolerante a fallos en servicios externos (MCP/IA/GTFS).
+
+### Mejoras v2 sugeridas
+- Añadir `role` y `permissions` derivados del token para controlar alcance.
+- Integrar `X-Request-Context` (zona/vecindario opcional) para enriquecer recomendaciones.
+- Log de `auth_events` con metadatos mínimos para monitoreo.
+
+## Alineación Spendly v3 — Consentimiento, roles ampliados y agregación segura
+
+- Consentimiento por tipo de dato: verificar cabeceras/claims para `mobility_data`, `commercial_data`, `energy_data` antes de recolectar.
+- Roles y ámbitos: `user`, `partner`, `government`, `city_device`; cada uno con permisos y límites de tasa definidos.
+- Anonimización aplicada: hash de usuario y discretización de ubicación/montos para `urban-data/*`.
+- Conectividad MX: endpoints `mx/*` requieren verificación reforzada y registro de acceso.
+
+### Mejoras v3 sugeridas
+- Middleware complementario: `withConsent(request, scope)` para validar consentimientos.
+- Auditoría ampliada: registrar `action`, `scope`, `zone`, `device` en `auth_events`.
+- Política de expiración: tokens con tiempos distintos para roles sensibles (ej. `city_device`).

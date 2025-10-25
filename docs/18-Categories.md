@@ -92,4 +92,25 @@ export async function POST(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Categorías Sostenibles
+
+- Etiquetas ambientales: categorías y subcategorías pueden incluir `carbon_factor` y `sustainability_tag`.
+- Visualización dual: colores e iconos reflejan impacto (ej. verde para bajo CO2).
+- Conexión urbana: categorías de transporte pueden enlazar a rutas/servicios públicos cercanos.
+- Educación: se muestran tips por categoría (ej. alternativas eco) en UI.
+
+### Mejoras v2 sugeridas
+- Extender modelo con `carbon_factor` y `priority` para recomendaciones.
+- Añadir `icon_variants` según tema claro/oscuro.
+- Integrar con `recommendations/generate` para consejos por categoría.
+
+## Alineación Spendly v3 — Etiquetas Urban Data y MX
+
+- `sourceTag`: opcionalmente marcar categorías con `mx_aggregation` si hay predominio de gastos sincronizados.
+- `urbanTag`: etiquetas para correlación con datos urbanos (movilidad/comercio/energía).
+- `benefitTag`: sugerir beneficios relevantes (canjeables) por categoría.
+
+### Mejoras v3 sugeridas
+- Añadir `policyTag` para conectar categorías con incentivos locales.
+- Integrar con `civic-points` para mostrar acciones que acrediten puntos.

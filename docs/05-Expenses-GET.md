@@ -142,3 +142,25 @@ export async function GET(req: NextRequest) {
   });
 }
 ```
+
+## Alineación Spendly v2 — Ciudad Inteligente
+
+- Insights contextuales: los listados pueden enriquecer la vista con equivalencias de CO2 y resúmenes por zona/horas de mayor gasto (opt-in).
+- Búsqueda inteligente: permitir filtros por `source` (`manual|whatsapp|bank_sync|ocr`) para medir fricción y calidad de captura.
+- Heatmaps de consumo: este módulo se complementa con `transport/heatmap` para patrones temporales (día/hora) y tipos.
+- Privacidad: agregaciones urbanas son anónimas y se realizan del lado del servidor.
+
+### Mejoras v2 sugeridas
+- Exponer `summary.co2Total` y `equivalences` si el cálculo de carbono está disponible.
+- Añadir campo `source` en respuesta para mejorar analítica de captura.
+- Preparar endpoints de exportación con metadatos de sostenibilidad (CSV/JSON).
+
+## Alineación Spendly v3 — Origen MX y métricas urbanas
+
+- Filtro `source` ampliado: incluir `mx_aggregation` para diferenciar gastos sincronizados desde MX.
+- Métricas urbanas: exponer (opcional) `summary.co2Total`, `equivalences` y, si hay consentimiento, `cityMetric` con promedio urbano.
+- Segmentación: permitir agrupar por `timeOfDay` y `dayOfWeek` para correlacionar con movilidad.
+
+### Mejoras v3 sugeridas
+- Añadir exportación con metadatos de urbanización (anónimos) para reportes B2B/B2G.
+- Integrar con `urban-data/*` para alimentar analytics agregados.

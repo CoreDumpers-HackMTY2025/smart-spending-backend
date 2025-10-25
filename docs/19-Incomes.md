@@ -141,3 +141,25 @@ export async function POST(req: NextRequest) {
   });
 }
 ```
+
+## Alineación Spendly v2 — Bienestar Financiero Urbano
+
+- Cashflow dual: permite visualizar ingresos vs egresos y su impacto ambiental correlativo.
+- Integración: ingresos pueden relacionarse con metas de ahorro y recomendaciones de ajuste.
+- Contexto urbano: insights sobre cómo el nivel de ingresos influye en hábitos (ej. transporte) y opciones de ahorro sostenibles.
+- Privacidad: no se comparte información personal; se usan agregaciones anónimas.
+
+### Mejoras v2 sugeridas
+- Añadir `incomeSourceType` estandarizado (ej. salario, freelance, beca) para análisis.
+- Conectar con `savings-goals` para metas automáticas (porcentaje del ingreso).
+- Exponer `monthBalance` y `trend` para comparativas.
+
+## Alineación Spendly v3 — Integración MX y CivicPoints
+
+- Datos MX: registrar ingresos de origen bancario (ej. depósitos, nómina) y distinguirlos con `source = mx_aggregation`.
+- Incentivos: sugerir aportes automáticos a metas de ahorro que otorguen CivicPoints (e.g., ahorro sostenible).
+- Métrica urbana: exponer (opt-in) comparativas por zona para ingresos promedio.
+
+### Mejoras v3 sugeridas
+- Integrar con `civic-points/earn` cuando el usuario configure ahorros sostenibles.
+- Añadir `incomeBenchmarks` por zona/sector (para paneles B2B/B2G).

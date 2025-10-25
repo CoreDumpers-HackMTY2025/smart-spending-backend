@@ -144,4 +144,25 @@ export async function GET(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Suscripciones y hábitos urbanos
+
+- Suscripciones: identificar servicios (streaming/gym) y gastos rutinales (ride-hailing) con contexto de ciudad.
+- Oportunidades: sugerir alternativas sostenibles (transporte público, bici) cuando detecta patrones.
+- Privacidad: análisis local por usuario y agregaciones anónimas.
+- Integración: conectar con `notifications` y `recommendations` para acciones.
+
+### Mejoras v2 sugeridas
+- Añadir campo `type: 'subscription'|'routine'` y `ecoAlternative` sugerida.
+- Incluir `estimatedCO2Monthly` para cuantificar impacto.
+- Exponer `confidence_reason` explicando consistencia del patrón.
+
+## Alineación Spendly v3 — Fuente MX y rutinas urbanas
+
+- Detección ampliada: considerar transacciones de origen `mx_aggregation` para suscripciones bancarias (ej. Netflix, Spotify).
+- Contexto urbano: correlacionar con `timeOfDay` y `dayOfWeek` para sugerir alternativas (transporte público, horarios eficientes).
+- Incentivos: proponer retos y beneficios (CivicPoints) al reconocer patrones con alto impacto.
+
+### Mejoras v3 sugeridas
+- Exponer `sourceBreakdown` en `summary` para ver proporción MX/manual.
+- Relacionar suscripciones con `urban-data/energy` para estimar ahorro energético.

@@ -136,3 +136,25 @@ export async function POST(req: NextRequest) {
   });
 }
 ```
+
+## Alineación Spendly v2 — Presupuestos Sostenibles
+
+- Doble meta: presupuestos pueden incluir objetivos de gasto y de CO2 por categoría.
+- Alertas inteligentes: avisos cuando el ritmo proyectado excede el límite y propuestas de ajuste (meal-prep, transporte público).
+- Conexión urbana: sugerencias se adaptan a patrones de movilidad y eventos de ciudad.
+- Transparencia: se muestran supuestos y se educa al usuario para tomar decisiones informadas.
+
+### Mejoras v2 sugeridas
+- Añadir campos opcionales `co2_limit` y `co2_spent` en resumen.
+- Exponer `adjustmentRecommendations` cuando `percent_used` > 100% o ritmo `fast`.
+- Integrar con `notifications` para avisos proactivos.
+
+## Alineación Spendly v3 — Presupuestos con datos MX y CivicPoints
+
+- Origen MX: reflejar límites ajustados considerando gastos sincronizados desde MX (`mx_aggregation`).
+- Incentivos: sugerir ajustes que otorguen CivicPoints (ej. `eco_action`) al cumplir metas sostenibles.
+- Métrica urbana: exponer (opt-in) comparativa `cityMetric` por categoría.
+
+### Mejoras v3 sugeridas
+- Añadir `co2_budget_recommendations` basadas en analytics urbanos.
+- Integrar con `civic-points/earn` cuando se cumplan metas de ahorro/CO2.

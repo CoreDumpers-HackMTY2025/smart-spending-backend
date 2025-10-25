@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useMemo, useState } from 'react';
-import { getSupabase } from '@/src/lib/supabaseClient';
+import { getSupabase } from '@/lib/supabaseClient';
 
 type Period = '7d' | '30d' | '90d';
 

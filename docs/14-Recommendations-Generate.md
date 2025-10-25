@@ -115,3 +115,25 @@ Asegúrate de devolver un array JSON. Evita texto adicional.`;
   });
 }
 ```
+
+## Alineación Spendly v2 — Consejos accionables urbanos
+
+- Contexto urbano: recomendaciones con alternativas de movilidad, meal-prep y benchmarks ecológicos de la ciudad.
+- Accionabilidad: cada ítem incluye pasos claros y ahorro/CO2 estimado.
+- Integración: enlazar recomendaciones con notificaciones y gamificación (retos semanales).
+- Privacidad: evitar datos sensibles; usar agregaciones y patrones generales.
+
+### Mejoras v2 sugeridas
+- Añadir `city_context` en prompt (picos de movilidad, promedio CO2) cuando esté disponible.
+- Validar resultados con esquema más estricto y tipado (response_format JSON).
+- Guardar `expires_at` y `priority` para orden inteligente en el cliente.
+
+## Alineación Spendly v3 — Integración MX y Urban Data
+
+- Datos MX + Urban Data: enriquecer el prompt con patrones de movilidad, actividad comercial y gastos bancarios sincronizados.
+- Beneficios: sugerir acciones que además otorguen CivicPoints y potencial de ahorro energético.
+- Segmentación: generar recomendaciones por zona/horario (opt-in) con impacto urbano.
+
+### Mejoras v3 sugeridas
+- Incluir `civic_points_gain` estimado en cada recomendación.
+- Usar `analytics/*` para comparar vs métricas urbanas y priorizar acciones.

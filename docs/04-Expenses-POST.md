@@ -208,4 +208,27 @@ export async function POST(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Ciudad Inteligente
+
+- Recopilación invisible: este endpoint convive con entradas automáticas por WhatsApp Bot, sincronización bancaria (mock) y OCR de tickets.
+- Doble impacto: se calculan equivalencias de CO2 y pueden dispararse consejos de movilidad (ej. transporte público vs ride-hailing) mediante notificaciones.
+- Contexto urbano: los avisos de presupuesto pueden considerar eventos de ciudad (picos de transporte, festividades) para recomendaciones más útiles.
+- Privacidad: los datos urbanos (promedios de zona, líneas de transporte) se usan solo para enriquecer sugerencias y nunca exponen información personal.
+
+### Mejoras v2 sugeridas
+- Enviar `event_type` en metadatos del gasto (opcional) para correlacionar con patrones urbanos.
+- Registrar `source` del gasto (`manual|whatsapp|bank_sync|ocr`) para analítica de fricción.
+- Añadir `carbon_equivalences` con más unidades (kWh, km auto, árboles) y comparativa vs promedio urbano.
+
+## Alineación Spendly v3 — Integración MX y datos urbanos
+
+- `source` extendido: incluir `mx_aggregation` para gastos provenientes de sincronización bancaria real (MX).
+- Enriquecimiento: si hay datos de ubicación, discretizar a cuadrículas (500m) y usar rangos de monto para proteger privacidad en recolección urbana.
+- Consentimiento: sólo se recolectan datos urbanos (movilidad/comercial) si el usuario tiene opt-in activo.
+- CivicPoints: registrar acciones `mobility_share` o `commercial_share` para otorgar puntos al usuario.
+
+### Mejoras v3 sugeridas
+- Adjuntar `locationGrid` y `amountRange` en metadatos (cuando aplique).
+- Integrar pipeline de enriquecimiento (categoría + CO2) previo a inserción desde MX.
+- Sincronizar con `urban-data/*` para aportar a analytics agregados (opt-in).

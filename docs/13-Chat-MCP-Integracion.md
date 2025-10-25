@@ -136,4 +136,25 @@ export async function POST(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Herramientas Urbanas MCP
+
+- Tools orientadas a ciudad: exponer herramientas MCP para consultar datos abiertos (ej. GTFS, calidad del aire, eventos locales) y enriquecer respuestas.
+- Experiencia conversacional: el chat puede sugerir alternativas sostenibles basadas en patrones del usuario y contexto urbano.
+- Persistencia de contexto: mantener estado de herramientas entre turnos para evitar llamadas redundantes.
+- Seguridad: sanitizar entradas y resultados de tools; logs mínimos de auditoría.
+
+### Mejoras v2 sugeridas
+- Añadir tools: `list_routes`, `route_alternatives`, `city_average_co2`, `weekly_insights`.
+- Extender `tool_specs` con parámetros tipados y validación básica.
+- Integrar con `recommendations/generate` para respuestas accionables.
+
+## Alineación Spendly v3 — Tools para MX, Urban Data y CivicPoints
+
+- MX: exponer `mx_connect_widget`, `mx_sync_transactions`, `mx_verify_account` como tools seguras.
+- Urban Data Hub: tools `urban_mobility_analytics`, `urban_commercial_analytics`, `urban_energy_analytics`.
+- CivicPoints: tools `civic_earn_points`, `civic_get_balance`, `civic_redeem_benefit` para acciones conversacionales.
+
+### Mejoras v3 sugeridas
+- Validar permisos/roles antes de tool_calls (user/partner/government).
+- Respuestas enriquecidas con comparativas urbanas y ahorros estimados.

@@ -153,4 +153,25 @@ export async function PATCH(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Metas con Impacto
+
+- Doble objetivo: además del ahorro monetario, se permite fijar metas de reducción de CO2.
+- Sugerencias: el sistema recomienda acciones (meal-prep, movilidad sostenible) para acercar al objetivo.
+- Conexión urbana: retos de comunidad/vecindario (opt-in) para metas compartidas.
+- Celebración: se integran logros al completar hitos ambientales o financieros.
+
+### Mejoras v2 sugeridas
+- Añadir campos opcionales `co2_target` y `co2_saved`.
+- Incluir `recommendedActions: string[]` en respuesta GET según patrón del usuario.
+- Conectar con `gamification/check` para otorgar logros al alcanzar hitos.
+
+## Alineación Spendly v3 — Ahorro automático MX y recompensas
+
+- Auto ahorro MX: sugerir aportes automáticos (vía datos bancarios sincronizados) hacia metas.
+- CivicPoints: otorgar puntos por contribuciones sostenibles (`eco_action`) y alcanzar hitos.
+- Panel urbano: mostrar impacto de metas en métricas urbanas (opt-in).
+
+### Mejoras v3 sugeridas
+- Integrar con `mx/accounts/verify` para validar cuentas destino (IAV).
+- Exponer `civic_points_gain` estimado por contribución.

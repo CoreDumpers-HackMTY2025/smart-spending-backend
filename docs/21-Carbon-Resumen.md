@@ -85,4 +85,25 @@ export async function GET(req: NextRequest) {
     }
   });
 }
-```
+
+## Alineación Spendly v2 — Impacto Ambiental Urbano
+
+- Comparativa urbana: el total y desglose por categoría se complementan con comparativas vs promedio de la ciudad (opt-in), promoviendo reducción consciente.
+- Equivalencias tangibles: árboles, km en coche y kWh para comunicar impacto de forma clara.
+- Notificaciones inteligentes: se conectan avisos cuando el total proyectado del mes supera metas personales o comunitarias.
+- Transparencia: se muestran supuestos/factores de emisión y se mantiene un enfoque educativo.
+
+### Mejoras v2 sugeridas
+- Añadir `equivalences: { trees, carKm, electricity, flights }` en la respuesta.
+- Exponer `cityAverageMonthlyKg` para comparativa directa y `trend` mensual.
+- Conectar con `dashboard/projection` para un panel dual de gasto y CO2.
+
+## Alineación Spendly v3 — Comparativa con Urban Data Hub
+
+- `cityAverageMonthlyKg` y `trend`: exponer (opt-in) métricas agregadas por zona desde `analytics/energy` y `analytics/mobility`.
+- `savingsPotential`: estimar reducción posible con rutas/acciones sostenibles basadas en datos urbanos.
+- Gobierno: permitir agregaciones anónimas para panel B2G y simulación de políticas.
+
+### Mejoras v3 sugeridas
+- Añadir `cityMetric` con clasificación relativa por zona.
+- Integrar con `civic-points` para premiar reducciones de CO2 sostenidas.
